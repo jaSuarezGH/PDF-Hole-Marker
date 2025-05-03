@@ -19,7 +19,7 @@ def draw_holes_by_number(hole_number:int, doc: any, hole_margin: int = HOLE_MARG
                 page.draw_circle((hole_margin, hole_y_pos), radius=3, color=(0, 0, 0), width=1.2)
 
     except Exception as e:
-        print("An exception occurred", e)
+        print("An exception occurred in draw_holes_by_number", e)
 
 def draw_holes_by_number_and_space(hole_number:int, hole_distance:int, doc: any, hole_margin: int = HOLE_MARGIN):
 
@@ -37,7 +37,7 @@ def draw_holes_by_number_and_space(hole_number:int, hole_distance:int, doc: any,
                 hole_y_pos += hole_distance
 
     except Exception as e:
-        print("An exception occurred", e)
+        print("An exception occurred in draw_holes_by_number_and_space", e)
 
 def clean_file_name(file_name:str) -> str:
     if not file_name.endswith(".pdf"):
@@ -48,15 +48,22 @@ def set_ouput_file_name(file_name:str) -> str:
 
 if __name__ == "__main__":
 
-    #file_name: str = clean_file_name(input("Enter PDF file name:"))
-    file_name: str = "documento.pdf"
-    output_file_name: str = set_ouput_file_name(file_name)
-
     try:
+        file_name: str = clean_file_name(input("\nEnter PDF file name: "))
+        option_selection: int = int(input("\nSelect an option \n[1] Simetrical holes by number \n[2] Simetrical holes by number and custom spacing \n->"))
+        output_file_name: str = set_ouput_file_name(file_name)
+        hole_number: int = int(input("\nEnter number of holes: "))
+
         doc = pymupdf.open(file_name) # Open a document
-        #draw_holes_by_number(5, doc)
-        draw_holes_by_number_and_space(3, 141, doc)
+
+        if (option_selection == 1):
+            draw_holes_by_number(hole_number, doc)
+        else:
+            hole_spacing: int = int(input("\nEnter hole spacing in points (for reference 1cm equals 28.3pt ): "))
+            draw_holes_by_number_and_space(3, hole_spacing, doc)
+
         doc.save(output_file_name) # Save the document with a new filename
+        print(f"\nGenerated marked file: {output_file_name}")
     except Exception as e:
         print("An exception occurred", e)
     finally:
