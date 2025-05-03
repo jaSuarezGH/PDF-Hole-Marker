@@ -1,0 +1,7 @@
+# PDF Handling
+pymupdf==1.25.5
+
+# Other
+
+# Environment variables
+# python-dotenv==1.0.1

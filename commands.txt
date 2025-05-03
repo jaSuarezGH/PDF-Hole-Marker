@@ -1,0 +1,8 @@
+[ INSTALL PROJECT DEPENDENCIES ]
+pip install -r requirements.txt
+
+[ REINSTALL ALL PROJECT DEPENDENCIES QUICKLY ]
+pip uninstall -r requirements.txt -y && pip install -r requirements.txt
+
+[ START ENVIRONMENT QUICKLY ]
+cd venv && cd Scripts && activate && cd .. && cd ..
