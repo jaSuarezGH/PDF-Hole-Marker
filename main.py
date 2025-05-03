@@ -27,7 +27,7 @@ def draw_holes_by_number_and_space(hole_number:int, hole_distance:int, doc: any,
         for page_index in range(len(doc)): # Iterate over pdf pages
             page = doc[page_index] # Get the page
             rect = page.rect # Get page rectangle (dimentions)
-            hole_y_pos = ((rect.height - (hole_distance)*hole_number))/2
+            hole_y_pos = ((rect.height - (hole_distance*(hole_number-1))))/2
             
             # Draw holes
             for x in range(hole_number):
