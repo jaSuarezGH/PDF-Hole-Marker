@@ -1,6 +1,6 @@
 import pymupdf
 
-HOLE_MARGIN: int = 10
+HOLE_MARGIN: int = 30
 
 def draw_holes_by_number(hole_number:int, doc: any, hole_margin: int = HOLE_MARGIN):
 
